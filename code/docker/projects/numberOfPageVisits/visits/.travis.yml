@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker 
+
+before_install:
+  - docker build -t overlord-actual/docker-data -f Dockerfile.dev .
+
+script:
+  - docker run overlord-actual/docker-data npm run test -- --coverage
+  
